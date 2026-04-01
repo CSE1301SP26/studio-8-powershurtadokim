@@ -1,6 +1,6 @@
 package studio8;
 
-import support.cse131.NotYetImplementedException;
+import java.util.Scanner;
 
 public class Question {
 	
@@ -10,8 +10,14 @@ public class Question {
 	 * @param answer
 	 * @param points
 	 */
+private String prompt;
+private String answer;
+private int points;
+
 	public Question(String prompt, String answer, int points) {
-		throw new NotYetImplementedException();
+		this.prompt = prompt;
+		this.answer = answer;
+		this.points = points;
 	}
 	
 	/**
@@ -40,7 +46,7 @@ public class Question {
 	 * @return int points
 	 */
 	public int getPoints() {
-		throw new NotYetImplementedException();
+		return this.points;
 	}
 	
 	/**
@@ -48,10 +54,25 @@ public class Question {
 	 * @return String answer
 	 */
 	public String getAnswer() {
-		throw new NotYetImplementedException();
+		return this.answer;
 	}
 	
 	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
 		// TODO: Create a Question object of your own!
+		Question q = new Question("What is 3 times 5?", "15", 100);
+		q.displayPrompt();
+		String userAnswer = input.nextLine();
+
+		int earnedPoints = q.checkAnswer(userAnswer);
+
+		if(earnedPoints == q.getPoints()){
+			System.out.println("Correct! You get " +earnedPoints+ " 15 points.");
+		} else {
+			System.out.println("Incorrect. You get 0 points"
+			);
+		}
+
+		System.out.println(q.checkAnswer("15"));
 	}
 }
